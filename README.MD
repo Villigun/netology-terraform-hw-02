@@ -73,7 +73,7 @@ variable "ssh_public_key_path" {
 ```
 
 Я считаю, что в этом случае улучшается читаемость кода - другой специалист, просмотрев terraform.tfvars, сразу поймет куда надо положить ключ или легко поправит путь к нему.  
-Чтобы ключ не светился в terrafom plan добавляем sensitive в locals.tf.
+Чтобы ключ не светился в terrafom plan добавляем sensitive в [locals.tf](https://github.com/Villigun/netology-terraform-hw-02/blob/master/terraform/z2/locals.tf).
 
 4.  Для начала создаем terraform.tfvars, куда прописываем значения cloud_id, older_id и default_zone, которые описаны в variables.tf, но им не присвоено значение по умолчанию.Затем инициализируем проект и правим ошибки
 
