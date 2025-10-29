@@ -15,7 +15,7 @@
 * скриншот консоли, curl должен отобразить тот же внешний ip-адрес;
 * ответы на вопросы.
 
-# Решение
+#### Решение
 
 2.  Создаем сервисный аккаунт и IAM-токен (вероятно это имелось в виду под "ключ")
 
@@ -75,7 +75,7 @@ variable "ssh_public_key_path" {
 Я считаю, что в этом случае улучшается читаемость кода - другой специалист, просмотрев terraform.tfvars, сразу поймет куда надо положить ключ или легко поправит путь к нему.  
 Чтобы ключ не светился в terrafom plan добавляем sensitive в [locals.tf](https://github.com/Villigun/netology-terraform-hw-02/blob/master/terraform/z2/locals.tf).
 
-4.  Для начала создаем terraform.tfvars, куда прописываем значения cloud_id, older_id и default_zone, которые описаны в variables.tf, но им не присвоено значение по умолчанию.Затем инициализируем проект и правим ошибки
+4.  Для начала создаем terraform.tfvars, куда прописываем значения cloud_id, older_id и default_zone, которые описаны в variables.tf, но им не присвоено значение по умолчанию. Затем инициализируем проект и правим ошибки
 
 ```
 terraform validate
@@ -109,7 +109,7 @@ Error: Error while requesting API to create instance: client-request-id = 8ecf66
 │   16: resource "yandex_compute_instance" "platform" {
 ```
 
-Правильное написание - standard, и, согласно [списку доступных платформ](https://yandex.cloud/ru/docs/compute/concepts/vm-platforms), standard-v4 не существует. Доступно standard-v4a с характиристиками черезвычайно завышенными для нашего задания. Остановимся на standard-v1 и заодно поправим кол-во ядер - допустимо 2 или 4.
+Правильное написание - standard, и, согласно [списку доступных платформ](https://yandex.cloud/ru/docs/compute/concepts/vm-platforms), standard-v4 не существует. Доступно standard-v4a с характиристиками черезвычайно завышенными для нашего задания. Остановимся на standard-v1 и, заодно, поправим кол-во ядер - допустимо 2 или 4.
 
 ```
 terraform apply -auto-approve
@@ -125,7 +125,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 ![alt text](https://github.com/Villigun/netology-terraform-hw-02/blob/master/img/img1-01.png)
 
-5.  Для удобства, чтобы не лазить каждый раз в web-интерфейс yandex cloud, который при создании ВМ назначает ей ip-addres по dhcp, добавим в outputs.tf вывод внешнего ip-адреса нашей ВМки.
+5.  Для удобства, чтобы не лазить каждый раз в web-интерфейс yandex cloud, который при создании ВМ назначает ей ip-address по dhcp, добавим в outputs.tf вывод внешнего ip-адреса нашей ВМки.
 
 ```
 # outputs.tf
@@ -150,7 +150,7 @@ ubuntu@fhm1cdkpgna89csmoipr:~$ curl ifconfig.me
 2.  Объявите нужные переменные в файле variables.tf, обязательно указывайте тип переменной. Заполните их default прежними значениями из main.tf.
 3.  Проверьте terraform plan. Изменений быть не должно.
 
-# Решение
+#### Решение
 
 Изменения коснутся таких значений как family, name, platform_id, cores, memory, core_fraction и, на всякий случай, имени пользователя ВМ (ubuntu).  
 Создаем в variables.tf описание соответствующих переменных, а в main.tf указываем обращения к ним в соответствующих полях (см [variables.tf](https://github.com/Villigun/netology-terraform-hw-02/blob/master/terraform/z2/variables.tf) и [main.tf](https://github.com/Villigun/netology-terraform-hw-02/blob/master/terraform/z2/main.tf)).
@@ -161,7 +161,7 @@ terraform plan ошибок не показал, ВМ создается с те
 2.  Скопируйте блок ресурса и создайте с его помощью вторую ВМ в файле main.tf: "netology-develop-platform-db" , cores  = 2, memory = 2, core_fraction = 20. Объявите её переменные с префиксом vm_db_ в том же файле ('vms_platform.tf'). ВМ должна работать в зоне "ru-central1-b"
 3.  Примените изменения.
 
-# Решение
+#### Решение
 
 Создали, скопировали, объявили, поправили, исправили, дописали и так несколько раз.
 Итог:
@@ -215,7 +215,7 @@ yc compute instance list
 Примените изменения.
 2.  В качестве решения приложите вывод значений ip-адресов команды terraform output.
 
-# Решение
+#### Решение
 
 1.  [Ссылка на outputs.tf](https://github.com/Villigun/netology-terraform-hw-02/blob/master/terraform/z4/outputs.tf)
 
@@ -245,9 +245,9 @@ vm_info = {
 2.  Замените переменные внутри ресурса ВМ на созданные вами local-переменные.
 3.  Примените изменения.
 
-# Решение
+#### Решение
 
-Вносим ищменения в [Ссылка на locals.tf](https://github.com/Villigun/netology-terraform-hw-02/blob/master/terraform/z5/locals.tf) и [Ссылка на main.tf](https://github.com/Villigun/netology-terraform-hw-02/blob/master/terraform/z5/main.tf)
+Вносим изменения в [locals.tf](https://github.com/Villigun/netology-terraform-hw-02/blob/master/terraform/z5/locals.tf) и [main.tf](https://github.com/Villigun/netology-terraform-hw-02/blob/master/terraform/z5/main.tf)  
 Применяем изменения. Результат не изменился:
 
 ![alt text](https://github.com/Villigun/netology-terraform-hw-02/blob/master/img/img5-01.png)
@@ -290,11 +290,11 @@ metadata = {
 3.  Найдите и закоментируйте все, более не используемые переменные проекта.
 4.  Проверьте terraform plan. Изменений быть не должно.
 
-# Решение
+#### Решение
 
-1.  В terraform.tfvars создаем map-переменную vms_resources с описанием конфигураций ВМок. Помимо core, memory и core_fraction добавим для удобства name, zone и platform_id, чтобы все данные о конфигурации хранились в одном месте. Затем описываем эту переменную в variables.tf.
-2.  По аналогии с предыдущим пунктом создаем и описываем переменную metadata. Обращаем внимание на то, что SSH-ключ здесь хранится в открытом тексте, хотя нас учили, что это ай-ай-ай - не хорошо. Необходимо убрать ключ и закоментировать блокировку отправки в .gitignore.
-3.  Находим, комментируем. Получается что в [vms_platform.tf](https://github.com/Villigun/netology-terraform-hw-02/blob/master/terraform/z6/vms_platform.tf), остается описание только одной переменной vm_web_ci_image, [locals.tf](!!! Ссылка на z6) вообще пустая, в [variables.tf](!!! ССылка на z6) добавились описания переменных vms_resources и metadata, несколько разросся [terraform.tfvars](https://github.com/Villigun/netology-terraform-hw-02/blob/master/terraform/z6/terraform.tfvars)
+1.  В [terraform.tfvars](https://github.com/Villigun/netology-terraform-hw-02/blob/master/terraform/z6/terraform.tfvars) создаем map-переменную vms_resources с описанием конфигураций ВМок. Помимо core, memory и core_fraction добавим для удобства name, zone и platform_id, чтобы все данные о конфигурации хранились в одном месте. Затем описываем эту переменную в [variables.tf](https://github.com/Villigun/netology-terraform-hw-02/blob/master/terraform/z6/variables.tf).
+2.  По аналогии с предыдущим пунктом создаем и описываем переменную metadata. Обращаем внимание на то, что SSH-ключ здесь хранится в открытом тексте, хотя нас учили, что это ай-ай-ай - не хорошо. Необходимо убрать ключ из файла и закоментировать блокировку отправки terraform.tfvars в .gitignore.
+3.  Находим, комментируем. Получается что в [vms_platform.tf](https://github.com/Villigun/netology-terraform-hw-02/blob/master/terraform/z6/vms_platform.tf), остается описание только одной переменной vm_web_ci_image, [locals.tf](!!! Ссылка на z6) вообще пустая, в [variables.tf](https://github.com/Villigun/netology-terraform-hw-02/blob/master/terraform/z6/locals.tf) добавились описания переменных vms_resources и metadata, несколько разросся [terraform.tfvars](https://github.com/Villigun/netology-terraform-hw-02/blob/master/terraform/z6/terraform.tfvars)
 
 Проверка:
 
