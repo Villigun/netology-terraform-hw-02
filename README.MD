@@ -123,7 +123,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 ВМ запущена
 
-![alt text](КАРТИНКА img1-01)
+![alt text](https://github.com/Villigun/netology-terraform-hw-02/blob/master/img/img1-01.png)
 
 5.  Для удобства, чтобы не лазить каждый раз в web-интерфейс yandex cloud, который при создании ВМ назначает ей ip-addres по dhcp, добавим в outputs.tf вывод внешнего ip-адреса нашей ВМки.
 
@@ -153,7 +153,7 @@ ubuntu@fhm1cdkpgna89csmoipr:~$ curl ifconfig.me
 # Решение
 
 Изменения коснутся таких значений как family, name, platform_id, cores, memory, core_fraction и, на всякий случай, имени пользователя ВМ (ubuntu).  
-Создаем в variables.tf описание соответствующих переменных, а в main.tf указываем обращения к ним в соответствующих полях (см [variables.tf](ССЫЛКА на Z2) и [main.tf](ССЫЛКА на Z2)).
+Создаем в variables.tf описание соответствующих переменных, а в main.tf указываем обращения к ним в соответствующих полях (см [variables.tf](https://github.com/Villigun/netology-terraform-hw-02/blob/master/terraform/z2/variables.tf) и [main.tf](https://github.com/Villigun/netology-terraform-hw-02/blob/master/terraform/z2/main.tf)).
 terraform plan ошибок не показал, ВМ создается с теми же параметрами.
 
 ### Задание 3
@@ -208,7 +208,7 @@ yc compute instance list
 +----------------------+-------------------------------+---------------+---------+--------------+--------------+
 ```
 
-![alt text](КАРТИНКА img3-01)
+![alt text](https://github.com/Villigun/netology-terraform-hw-02/blob/master/img/img3-01.png)
 
 ### Задание 4
 1.  Объявите в файле outputs.tf один output , содержащий: instance_name, external_ip, fqdn для каждой из ВМ в удобном лично для вас формате.(без хардкода!!!)
@@ -217,7 +217,7 @@ yc compute instance list
 
 # Решение
 
-1.  [Ссылка на outputs.tf](!!! Ссылка на z4!!!)
+1.  [Ссылка на outputs.tf](https://github.com/Villigun/netology-terraform-hw-02/blob/master/terraform/z4/outputs.tf)
 
 2.  
 
@@ -247,10 +247,10 @@ vm_info = {
 
 # Решение
 
-Вносим ищменения в [Ссылка на locals.tf](!!! Ссылка на z5!!!) и [Ссылка на main.tf](!!! Ссылка на z5!!!)
+Вносим ищменения в [Ссылка на locals.tf](https://github.com/Villigun/netology-terraform-hw-02/blob/master/terraform/z5/locals.tf) и [Ссылка на main.tf](https://github.com/Villigun/netology-terraform-hw-02/blob/master/terraform/z5/main.tf)
 Применяем изменения. Результат не изменился:
 
-![alt text](КАРТИНКА img5-01)
+![alt text](https://github.com/Villigun/netology-terraform-hw-02/blob/master/img/img5-01.png)
 
 ### Задание 6
 1.  Вместо использования трёх переменных ".._cores",".._memory",".._core_fraction" в блоке resources {...}, объедините их в единую map-переменную vms_resources и внутри неё конфиги обеих ВМ в виде вложенного map(object).
@@ -294,6 +294,10 @@ metadata = {
 
 1.  В terraform.tfvars создаем map-переменную vms_resources с описанием конфигураций ВМок. Помимо core, memory и core_fraction добавим для удобства name, zone и platform_id, чтобы все данные о конфигурации хранились в одном месте. Затем описываем эту переменную в variables.tf.
 2.  По аналогии с предыдущим пунктом создаем и описываем переменную metadata. Обращаем внимание на то, что SSH-ключ здесь хранится в открытом тексте, хотя нас учили, что это ай-ай-ай - не хорошо. Необходимо убрать ключ и закоментировать блокировку отправки в .gitignore.
-3.  Находим, комментируем. Получается что в [vms_platform.tf](!!! Ссылка на z6), остается описание только одной переменной vm_web_ci_image, [locals.tf](!!! Ссылка на z6) вообще пустая, в [variables.tf](!!! ССылка на z6) добавились описания переменных vms_resources и metadata, несколько разросся [terraform.tfvars](!!! Ссылка на z6)
+3.  Находим, комментируем. Получается что в [vms_platform.tf](https://github.com/Villigun/netology-terraform-hw-02/blob/master/terraform/z6/vms_platform.tf), остается описание только одной переменной vm_web_ci_image, [locals.tf](!!! Ссылка на z6) вообще пустая, в [variables.tf](!!! ССылка на z6) добавились описания переменных vms_resources и metadata, несколько разросся [terraform.tfvars](https://github.com/Villigun/netology-terraform-hw-02/blob/master/terraform/z6/terraform.tfvars)
+
+Проверка:
+
+![alt text](https://github.com/Villigun/netology-terraform-hw-02/blob/master/img/img6-01.png)
 
 Вывод - используя map, можно существено сократить код и добиться его лаконичности.
