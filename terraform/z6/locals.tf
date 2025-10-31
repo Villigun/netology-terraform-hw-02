@@ -4,6 +4,17 @@
 #   ssh_public_key = sensitive(file(var.ssh_public_key_path))
 # }
 
+# ===== names variables =====
+
+locals {
+  project       = "netology"
+  env           = "develop"
+  system        = "platform"
+
+  vm_web_name   = "${local.project}-${local.env}-${local.system}-web"
+  vm_db_name    = "${local.project}-${local.env}-${local.system}-db"
+}
+
 ### ===== vm_web variables ===== ###
 
 # Играемся с индексным списком

@@ -9,12 +9,11 @@ resource "yandex_vpc_subnet" "develop" {
   v4_cidr_blocks = var.default_cidr
 }
 
-
 data "yandex_compute_image" "ubuntu" {
   family = var.vm_web_ci_image
 }
 
-# ===== platform =====
+# ===== web =====
 
 resource "yandex_compute_instance" "platform" {
   # name        = var.vm_web_name

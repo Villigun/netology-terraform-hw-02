@@ -10,7 +10,7 @@ alternative_zone  = "ru-central1-b"         # Alternative zone
 # Ресурсы ВМок
 vms_resources = {
   web={
-    name="netology-develop-platform-web"
+#    name="netology-develop-platform-web"
     zone="ru-central1-a"
     platform_id="standard-v1"
     cores=2
@@ -20,7 +20,7 @@ vms_resources = {
     hdd_type="network-hdd"
   },
   db= {
-    name="netology-develop-platform-db"
+#    name="netology-develop-platform-db"
     zone="ru-central1-b"
     platform_id="standard-v1"    
     cores=2
@@ -34,5 +34,5 @@ vms_resources = {
 metadata = {
   serial-port-enable = 1
   # !!! Ахтунг !!! Не забудь удалить ключ!
-  ssh-keys           = "ubuntu:ssh-ed25519 AAAAC - а вот и нет"
+  ssh-keys           = "ubuntu:ssh-ed25519 AAAAC_текст"
 }

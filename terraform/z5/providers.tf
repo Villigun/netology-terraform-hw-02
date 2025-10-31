@@ -12,5 +12,5 @@ provider "yandex" {
   cloud_id                 = var.cloud_id
   folder_id                = var.folder_id
   zone                     = var.default_zone
-  service_account_key_file = file("C:/Users/doom/Desktop/DZ/netology-terraform-hw-02/terraform/authorized_key.json")
+  service_account_key_file = file("Путь")
 }

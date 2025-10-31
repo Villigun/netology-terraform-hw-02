@@ -51,7 +51,7 @@ data "yandex_compute_image" "ubuntu" {
   # }
 
 resource "yandex_compute_instance" "platform" {
-  name        = var.vms_resources["web"].name
+  name        = local.vm_web_name
   zone        = var.vms_resources["web"].zone
   platform_id = var.vms_resources["web"].platform_id
   resources {
@@ -129,7 +129,7 @@ resource "yandex_vpc_subnet" "db" {
   # }
 
 resource "yandex_compute_instance" "db" {
-  name        = var.vms_resources["db"].name
+  name        = local.vm_db_name
   zone        = var.vms_resources["db"].zone
   platform_id = var.vms_resources["db"].platform_id
   resources {

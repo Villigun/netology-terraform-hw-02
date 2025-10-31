@@ -21,11 +21,11 @@ variable "vm_web_ci_image" {
   default     = "ubuntu-2004-lts"
 }
 
-variable "vm_web_name" {
-  type        = string
-  description = "Имя виртуальной машины web"
-  default     = "netology-develop-platform-web"
-}
+# variable "vm_web_name" {
+#   type        = string
+#   description = "Имя виртуальной машины web"
+#   default     = "netology-develop-platform-web"
+# }
 
 variable "vm_web_platform" {
   type        = string
@@ -59,11 +59,11 @@ variable "vm_db_ci_image" {
   default     = "ubuntu-2004-lts"
 }
 
-variable "vm_db_name" {
-  type        = string
-  description = "Имя виртуальной машины web"
-  default     = "netology-develop-platform-db"
-}
+# variable "vm_db_name" {
+#   type        = string
+#   description = "Имя виртуальной машины web"
+#   default     = "netology-develop-platform-db"
+# }
 
 variable "vm_db_platform" {
   type        = string

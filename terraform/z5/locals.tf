@@ -4,6 +4,17 @@ locals {
   ssh_public_key = sensitive(file(var.ssh_public_key_path))
 }
 
+# ===== names variables =====
+
+locals {
+  project       = "netology"
+  env           = "develop"
+  system        = "platform"
+
+  vm_web_name   = "${local.project}-${local.env}-${local.system}-web"
+  vm_db_name    = "${local.project}-${local.env}-${local.system}-db"
+}
+
 # ===== vm_web variables =====
 
 # Играемся с индексным списком
@@ -20,7 +31,7 @@ locals {
 
 locals {
   vm_ci_platform  = {
-    name        = var.vm_web_name,
+    name        = local.vm_web_name,
     zone        = var.default_zone,
     platform_id = var.vm_web_platform,
     cores       = var.vm_web_cores,
@@ -45,7 +56,7 @@ locals {
 
 locals {
   vm_ci_db  = {
-    name        = var.vm_db_name,
+    name        = local.vm_db_name,
     zone        = var.alternative_zone,
     platform_id = var.vm_db_platform,
     cores       = var.vm_db_cores,
